@@ -11,5 +11,6 @@ Also, you will create your own message type for this challenge. This message wil
 a float32 whose name is “completed”. You will use this message to show how many percent are completed by publishing it to a topic called “/draw_percent”. Your message file will be in the msg folder of your package.
 
 Your node-topic relation should look like this:
+![plot](./scheme1.png)
 
 Rectangles are the topics, ellipses are the nodes, and /turtle1 is the namespace for the first turtle in the turtlesim.
