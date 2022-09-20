@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/bean/dev/repos/challenges/catkin_ws/devel/setup.sh
