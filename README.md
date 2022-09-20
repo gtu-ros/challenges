@@ -14,7 +14,7 @@ Detailed guide: https://github.com/firstcontributions/first-contributions/blob/m
 
 ## Challenge 1
 
-In this challenge, you will create a ROS package in your catkin_ws with the name “challenge”. That package will contain the CMakeLists.txt file, package.xml file, scripts folder (for the python files if you use python), src folder (for the c++ files if you use c++), launch folder (for launch file), and msg (for your custom message) folder. You can also create an include folder if you want to create header file(s) for c++.
+In this challenge, you will create a ROS package in your catkin_ws with the name “challenge1”. That package will contain the CMakeLists.txt file, package.xml file, scripts folder (for the python files if you use python), src folder (for the c++ files if you use c++), launch folder (for launch file), and msg (for your custom message) folder. You can also create an include folder if you want to create header file(s) for c++.
 
 Your node file name will be draw_triangle.cpp/py and this node will provide the turtle in the turtlesim draw an equilateral triangle by asking the user the side length (side length can be a float). You will get the input from the terminal. After the drawing is completed your program will ask the user to draw a new triangle or exit. (beware of turtlesim's limits when taking the side length)
 
