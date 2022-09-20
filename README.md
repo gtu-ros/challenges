@@ -22,7 +22,7 @@ For this challenge, the turtle’s moving speed must be adjustable at the runtim
 The parameter name will be turtle_speed and you will set it to 1.0 (as default) in your package`s launch file (You can look at the roslaunch card on Trello to learn how to write the launch file) in the launch folder. After the node is launched you will change the turtle_speed parameter using the rosparam set command. (If you make it 2.0 then your turtle’s speed will be increased by double)
 
 Also, you will create your own message type for this challenge. This message will contain
-a float32 whose name is “completed”. You will use this message to show how many percent of triangle are completed by publishing it to a topic called “/draw_percent”. Your message file will be in the msg folder of your package.
+a float32 whose name is “completed”. You will use this message to show how many percent of the triangle are completed by publishing it to a topic called “/draw_percent”. Your message file will be in the msg folder of your package.
 
 Your node-topic relation should look like this:
 ![plot](./scheme1.png)
