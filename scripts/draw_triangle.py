@@ -16,8 +16,9 @@ class MyTurtle:
 
     def update_vel(self, is_angular, is_linear, velocity, distance):
         t0 = rospy.Time.now().to_sec()
-        if is_linear == True:
-            self.vel.linear.x = 1.0
+        if is_linear:
+            # If turtle is to draw a side, it only has linear velocity
+            self.vel.linear.x = velocity
             self.vel.linear.y = 0.0
             self.vel.linear.z = 0.0
             self.vel.angular.x = 0.0
@@ -30,9 +31,12 @@ class MyTurtle:
                 self.velocity_pub.publish(self.vel)
                 t1 = rospy.Time.now().to_sec()
                 distance_taken = velocity * (t1 - t0)
-        else:
+            self.vel.linear.x = 0  # Stop the turtle
+
+        if is_angular:
+            # If turtle is on a corner, turn 120 degrees to draw the next side
             current_angle = 0.0
-            angular_speed = 20 * 2 * PI / 360
+            angular_speed = velocity * 2 * PI / 360
             relative_angle = 120 * 2 * PI / 360  # Equaliteral triangle
             self.vel.linear.x = 0.0
             self.vel.linear.y = 0.0
@@ -45,20 +49,20 @@ class MyTurtle:
                 self.velocity_pub.publish(self.vel)
                 t1 = rospy.Time.now().to_sec()
                 current_angle = angular_speed * (t1 - t0)
+            self.vel.angular.z = 0  # Stop the turtle
+
+        self.velocity_pub.publish(self.vel)  # Publish the stop message
 
     def draw(self):
         while not rospy.is_shutdown():
             side_length = float(input("Enter side length: "))
             if side_length > 0.0:
                 self.update_vel(False, True, 1, side_length)
-                self.update_vel(True, False, 0.5, 0)
+                self.update_vel(True, False, 20, 0)
                 self.update_vel(False, True, 1, side_length)
-                self.update_vel(True, False, 0.5, 0)
+                self.update_vel(True, False, 20, 0)
                 self.update_vel(False, True, 1, side_length)
-                break
-
-            else:
-                break
+            break
 
 
 if __name__ == "__main__":
