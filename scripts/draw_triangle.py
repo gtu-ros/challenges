@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rospy
 from geometry_msgs.msg import Twist
-from challenge1.msg import Progress
+#from challenge1.msg import Progress
 
 PI = 3.14
 
@@ -15,7 +15,6 @@ class MyTurtle:
         self.rate = rospy.Rate(10)
 
     def update_vel(self, is_angular, is_linear, velocity, distance):
-        t0 = rospy.Time.now().to_sec()
         if is_linear:
             # If turtle is to draw a side, it only has linear velocity
             self.vel.linear.x = velocity
@@ -26,7 +25,7 @@ class MyTurtle:
             self.vel.angular.z = 0.0
 
             distance_taken = 0
-
+            t0 = rospy.Time.now().to_sec()
             while distance > distance_taken:
                 self.velocity_pub.publish(self.vel)
                 t1 = rospy.Time.now().to_sec()
@@ -45,6 +44,7 @@ class MyTurtle:
             self.vel.angular.y = 0.0
             self.vel.angular.z = angular_speed
 
+            t0 = rospy.Time.now().to_sec()
             while relative_angle > current_angle:
                 self.velocity_pub.publish(self.vel)
                 t1 = rospy.Time.now().to_sec()
