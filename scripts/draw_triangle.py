@@ -56,6 +56,7 @@ class MyTurtle:
     def draw(self):
         while not rospy.is_shutdown():
             side_length = float(input("Enter side length: "))
+            
             if side_length > 0.0:
                 self.update_vel(False, True, 1, side_length)
                 self.update_vel(True, False, 20, 0)
@@ -69,5 +70,8 @@ if __name__ == "__main__":
     try:
         turtle = MyTurtle()
         turtle.draw()
+        while (input("Enter -1 to exit, any other key to continue: ")!="-1"):
+            turtle.draw()
+        
     except rospy.ROSInterruptException:
         pass
