@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 import rospy
 from geometry_msgs.msg import Twist
+import math
 #from challenge1.msg import Progress
-
-PI = 3.14
 
 
 class MyTurtle:
@@ -35,8 +34,8 @@ class MyTurtle:
         if is_angular:
             # If turtle is on a corner, turn 120 degrees to draw the next side
             current_angle = 0.0
-            angular_speed = velocity * 2 * PI / 360
-            relative_angle = 120 * 2 * PI / 360  # Equaliteral triangle
+            angular_speed = velocity * 2 * math.pi / 360
+            relative_angle = 120 * 2 * math.pi / 360  # Equaliteral triangle
             self.vel.linear.x = 0.0
             self.vel.linear.y = 0.0
             self.vel.linear.z = 0.0
