@@ -120,6 +120,9 @@ if __name__ == '__main__':
 				flag = False
 			else:
 				l = float(l)
+				while l >= 65:
+					print("Please enter smaller number (64 maks) : ", end="")
+					l = float(input())
 				draw_triangle(l)
 		except rospy.ROSInterruptException:
 			pass
