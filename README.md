@@ -27,5 +27,5 @@ a float32 whose name is “completed”. You will use this message to show how m
 Your node-topic relation should look like this:
 ![plot](./scheme1.png)
 
-Rectangles are the topics, ellipses are the nodes, and /turtle1 is the namespace for the first turtle in the turtlesim.
+Rectangles are the topics, ellipses are the nodes, and /turtle1 is the namespace for the first turtle in the turtlesim..
 
