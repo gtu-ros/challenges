@@ -120,8 +120,13 @@ if __name__ == '__main__':
 				flag = False
 			else:
 				l = float(l)
+<<<<<<< HEAD:challenge_one/catkin_ws/src/challenge_one/scripts/main.py
 				while l<5 or l>65:
 					print("Please enter 5-65 numbers! ", end = "");
+=======
+				while l >= 65:
+					print("Please enter smaller number (64 maks) : ", end="")
+>>>>>>> 0d4244c302609e172a4cf3217d462d3cb9b69e00:challenge_one/src/main.py
 					l = float(input())
 				draw_triangle(l)
 		except rospy.ROSInterruptException:
