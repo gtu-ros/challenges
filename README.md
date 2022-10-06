@@ -3,6 +3,8 @@ This challenge done by Mens1s.
 I have only %1-4 error because of math.sqrt
 This project can be updated.
 You can visit the video with <a href =  "https://www.youtube.com/watch?v=Me62o9J9Zbk&feature=youtu.be&ab_channel=AhmetY."> click here </a>
+MY node-topic relation: 
+![plot](.challenge_one/scheme1.png)
 ## How to contribute?
 
 1. Fork this repository.
