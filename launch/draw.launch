@@ -1,0 +1,5 @@
+<launch>
+    <param name="speed" value="1.0" />
+
+    <node name="draw_Triangle" pkg="challange1" type="move.py" output="screen"/>
+</launch>
