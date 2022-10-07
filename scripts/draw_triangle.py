@@ -17,7 +17,7 @@ class Turtle:
         )
 
     def update_progress(self, percentage, line_number):
-        rate = rospy.Rate(1)
+        rate = rospy.Rate(5)
 
         progress = Progress()
         progress.completed = percentage / 3 + 100 / 3 * (line_number - 1)
@@ -72,12 +72,14 @@ class Turtle:
         while not rospy.is_shutdown():
             side_length = float(input("Enter side length: "))
 
+            velocity = rospy.get_param("turtle_speed")
+
             if side_length > 0.0:
-                self.update_vel(False, True, 1, side_length, 1)
+                self.update_vel(False, True, velocity, side_length, 1)
                 self.update_vel(True, False, 20, 0, 0)
-                self.update_vel(False, True, 1, side_length, 2)
+                self.update_vel(False, True, velocity, side_length, 2)
                 self.update_vel(True, False, 20, 0, 0)
-                self.update_vel(False, True, 1, side_length, 3)
+                self.update_vel(False, True, velocity, side_length, 3)
             break
 
 
