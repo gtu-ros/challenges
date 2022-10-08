@@ -8,4 +8,3 @@
 
 # modified environment variables
 export PWD='/home/ry/challenges/catkin_ws/build'
-export PYTHONPATH="/home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages:$PYTHONPATH"

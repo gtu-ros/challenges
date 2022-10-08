@@ -53,22 +53,22 @@ CMAKE_BINARY_DIR = /home/ry/challenges/catkin_ws/build
 # Include the progress variables for this target.
 include challenge1/CMakeFiles/challenge1_generate_messages_py.dir/progress.make
 
-challenge1/CMakeFiles/challenge1_generate_messages_py: /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Num.py
+challenge1/CMakeFiles/challenge1_generate_messages_py: /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Completed.py
 challenge1/CMakeFiles/challenge1_generate_messages_py: /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/__init__.py
 
 
-/home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Num.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Num.py: /home/ry/challenges/catkin_ws/src/challenge1/msg/Num.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ry/challenges/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG challenge1/Num"
-	cd /home/ry/challenges/catkin_ws/build/challenge1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ry/challenges/catkin_ws/src/challenge1/msg/Num.msg -Ichallenge1:/home/ry/challenges/catkin_ws/src/challenge1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p challenge1 -o /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg
+/home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Completed.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Completed.py: /home/ry/challenges/catkin_ws/src/challenge1/msg/Completed.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ry/challenges/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG challenge1/Completed"
+	cd /home/ry/challenges/catkin_ws/build/challenge1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ry/challenges/catkin_ws/src/challenge1/msg/Completed.msg -Ichallenge1:/home/ry/challenges/catkin_ws/src/challenge1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p challenge1 -o /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg
 
 /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/__init__.py: /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Num.py
+/home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/__init__.py: /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Completed.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ry/challenges/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for challenge1"
 	cd /home/ry/challenges/catkin_ws/build/challenge1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg --initpy
 
 challenge1_generate_messages_py: challenge1/CMakeFiles/challenge1_generate_messages_py
-challenge1_generate_messages_py: /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Num.py
+challenge1_generate_messages_py: /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/_Completed.py
 challenge1_generate_messages_py: /home/ry/challenges/catkin_ws/devel/lib/python3/dist-packages/challenge1/msg/__init__.py
 challenge1_generate_messages_py: challenge1/CMakeFiles/challenge1_generate_messages_py.dir/build.make
 

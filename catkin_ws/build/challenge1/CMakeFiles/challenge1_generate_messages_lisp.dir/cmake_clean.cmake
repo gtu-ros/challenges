@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/ry/challenges/catkin_ws/devel/share/common-lisp/ros/challenge1/msg/Num.lisp"
+  "/home/ry/challenges/catkin_ws/devel/share/common-lisp/ros/challenge1/msg/Completed.lisp"
   "CMakeFiles/challenge1_generate_messages_lisp"
 )
 

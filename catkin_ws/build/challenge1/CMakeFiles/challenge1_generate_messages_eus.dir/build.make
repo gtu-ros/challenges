@@ -53,21 +53,21 @@ CMAKE_BINARY_DIR = /home/ry/challenges/catkin_ws/build
 # Include the progress variables for this target.
 include challenge1/CMakeFiles/challenge1_generate_messages_eus.dir/progress.make
 
-challenge1/CMakeFiles/challenge1_generate_messages_eus: /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Num.l
+challenge1/CMakeFiles/challenge1_generate_messages_eus: /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Completed.l
 challenge1/CMakeFiles/challenge1_generate_messages_eus: /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/manifest.l
 
 
-/home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Num.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-/home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Num.l: /home/ry/challenges/catkin_ws/src/challenge1/msg/Num.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ry/challenges/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from challenge1/Num.msg"
-	cd /home/ry/challenges/catkin_ws/build/challenge1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ry/challenges/catkin_ws/src/challenge1/msg/Num.msg -Ichallenge1:/home/ry/challenges/catkin_ws/src/challenge1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p challenge1 -o /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg
+/home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Completed.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Completed.l: /home/ry/challenges/catkin_ws/src/challenge1/msg/Completed.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ry/challenges/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from challenge1/Completed.msg"
+	cd /home/ry/challenges/catkin_ws/build/challenge1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ry/challenges/catkin_ws/src/challenge1/msg/Completed.msg -Ichallenge1:/home/ry/challenges/catkin_ws/src/challenge1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p challenge1 -o /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg
 
 /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ry/challenges/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for challenge1"
 	cd /home/ry/challenges/catkin_ws/build/challenge1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1 challenge1 std_msgs
 
 challenge1_generate_messages_eus: challenge1/CMakeFiles/challenge1_generate_messages_eus
-challenge1_generate_messages_eus: /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Num.l
+challenge1_generate_messages_eus: /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Completed.l
 challenge1_generate_messages_eus: /home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/manifest.l
 challenge1_generate_messages_eus: challenge1/CMakeFiles/challenge1_generate_messages_eus.dir/build.make
 

@@ -53,16 +53,16 @@ CMAKE_BINARY_DIR = /home/ry/challenges/catkin_ws/build
 # Include the progress variables for this target.
 include challenge1/CMakeFiles/challenge1_generate_messages_nodejs.dir/progress.make
 
-challenge1/CMakeFiles/challenge1_generate_messages_nodejs: /home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg/Num.js
+challenge1/CMakeFiles/challenge1_generate_messages_nodejs: /home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg/Completed.js
 
 
-/home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg/Num.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
-/home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg/Num.js: /home/ry/challenges/catkin_ws/src/challenge1/msg/Num.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ry/challenges/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from challenge1/Num.msg"
-	cd /home/ry/challenges/catkin_ws/build/challenge1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ry/challenges/catkin_ws/src/challenge1/msg/Num.msg -Ichallenge1:/home/ry/challenges/catkin_ws/src/challenge1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p challenge1 -o /home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg
+/home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg/Completed.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg/Completed.js: /home/ry/challenges/catkin_ws/src/challenge1/msg/Completed.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ry/challenges/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from challenge1/Completed.msg"
+	cd /home/ry/challenges/catkin_ws/build/challenge1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ry/challenges/catkin_ws/src/challenge1/msg/Completed.msg -Ichallenge1:/home/ry/challenges/catkin_ws/src/challenge1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p challenge1 -o /home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg
 
 challenge1_generate_messages_nodejs: challenge1/CMakeFiles/challenge1_generate_messages_nodejs
-challenge1_generate_messages_nodejs: /home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg/Num.js
+challenge1_generate_messages_nodejs: /home/ry/challenges/catkin_ws/devel/share/gennodejs/ros/challenge1/msg/Completed.js
 challenge1_generate_messages_nodejs: challenge1/CMakeFiles/challenge1_generate_messages_nodejs.dir/build.make
 
 .PHONY : challenge1_generate_messages_nodejs

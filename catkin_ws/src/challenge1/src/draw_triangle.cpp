@@ -7,6 +7,7 @@
 #include "geometry_msgs/Pose2D.h" // x, y position and theta orientation
 #include "turtlesim/Pose.h" // x, y, theta, linear & angular velocity
 #include "std_msgs/Float32.h"
+#include "challenge1/Completed.h"
 // Remove the need to use std:: prefix
 using namespace std;
  
@@ -18,6 +19,7 @@ geometry_msgs::Pose2D startpos;
 geometry_msgs::Pose2D firstcorner;
 geometry_msgs::Pose2D secondcorner;
 geometry_msgs::Pose2D goal;
+challenge1::Completed msg;
 
 double sideLen = 1;
 const double PI = 3.14159265359;
@@ -25,8 +27,7 @@ bool firstCornerReached = false;
 bool secondCornerReached = false;
 bool triangleDone = false;
 bool startPosDetermined = false;
-double completed = 0;
-double velocity;
+double velocity = 0;
  
 // The distance threshold in meters that will determine when 
 // the turtlesim robot successfully reaches the goal.
@@ -102,12 +103,15 @@ void changeGoal(ros::Publisher velocityPub){
   }else if(!secondCornerReached){
     goal = secondcorner;
     rotate(degrees2radians(30),degrees2radians(120),false,velocityPub);
+    msg.completed = 33.333333f;
+    
 
   }else if(!triangleDone){
     goal = startpos;
     rotate(degrees2radians(30),degrees2radians(120),false,velocityPub);
-
+    msg.completed = 66.666666f;
   }else{
+    msg.completed = 100;
     cout << "Triangle has been drawn!"<< endl << endl;
   }
   
@@ -129,11 +133,11 @@ void setVelocity(ros::Publisher velocityPub) {
     // goal.
     velCommand.linear.x = velocity;
     if(!firstCornerReached){
-      completed = (((current.x - startpos.x) /sideLen) * ((double)1/3)) * 100;
+      msg.completed = (((current.x - startpos.x) /sideLen) * ((double)1/3)) * 100;
     }else if(!secondCornerReached){
-      completed = (sqrt((firstcorner.x - current.x)*(firstcorner.x - current.x) + (current.y - firstcorner.y)*(current.y - firstcorner.y)) + sideLen) * 100 / (3 * sideLen);
+      msg.completed = (sqrt((firstcorner.x - current.x)*(firstcorner.x - current.x) + (current.y - firstcorner.y)*(current.y - firstcorner.y)) + sideLen) * 100 / (3 * sideLen);
     }else if(!triangleDone){
-      completed = (sqrt((secondcorner.x - current.x)*(secondcorner.x - current.x) + (secondcorner.y - current.y)*(secondcorner.y - current.y)) + (2*sideLen)) * 100 / (3 * sideLen);
+      msg.completed = (sqrt((secondcorner.x - current.x)*(secondcorner.x - current.x) + (secondcorner.y - current.y)*(secondcorner.y - current.y)) + (2*sideLen)) * 100 / (3 * sideLen);
     }
   }
   else {
@@ -145,7 +149,6 @@ void setVelocity(ros::Publisher velocityPub) {
       secondCornerReached = true;
     }else if(!triangleDone){
       triangleDone = true;
-      completed = 100;
     }else{   
       reset();
     }
@@ -182,16 +185,15 @@ int main(int argc, char **argv) {
   // Hold no messages in the queue. Automatically throw away 
   // any messages that are received that are not able to be
   // processed quickly enough.
-  ros::Publisher velocityPub =
-    node.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 0);
+  ros::Publisher velocityPub = node.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 0);
   
   ros::Publisher draw_percent_pub = node.advertise<std_msgs::Float32>("draw_percent",1000);
+
+  //ros::Publisher pub = node.advertise<challenge1::Completed>("completed",10);
   // Specify a frequency that want the while loop below to loop at
   // In this case, we want to loop 10 cycles per second
   ros::Rate loop_rate(10); 
-  velocity = 1.0;
   
- 
   // Keep running the while loop below as long as the ROS Master is active. 
   while (ros::ok()) {
  
@@ -227,30 +229,9 @@ int main(int argc, char **argv) {
    setVelocity(velocityPub);
    // Publish the velocity command to the ROS topic
    velocityPub.publish(velCommand);
-   std_msgs::Float32 msg;
-   msg.data = completed;
+   
    draw_percent_pub.publish(msg);
-   cout << "completed:" << completed;
   
- 
-    
- 
-    
- 
-    // Print the output to the console
-    cout << "start x = " << startpos.x << endl
-        << "start y = " << startpos.y << endl
-    << "Current x = " << current.x << endl
-         << "Goal x = " << goal.x <<  endl
-         << "Distance to Goal x = " << getDistanceToGoalx() << " m" << endl
-         << "Current y = " << current.y << endl
-         << "Goal y = " << goal.y <<  endl
-         << "Distance to Goal y = " << getDistanceToGoaly() << " m" << endl
-         << "Linear Velocity (x) = " << velCommand.linear.x << " m/s" << endl
-         << "Linear Velocity (y) = " << velCommand.linear.y << " m/s" << endl
-         << "first corner reached =" << firstCornerReached << endl
-         << "second corner reached =" << secondCornerReached << endl<<endl<<endl<<endl;
- 
     // Sleep as long as we need to to make sure that we have a frequency of
     // 10Hz
     loop_rate.sleep();

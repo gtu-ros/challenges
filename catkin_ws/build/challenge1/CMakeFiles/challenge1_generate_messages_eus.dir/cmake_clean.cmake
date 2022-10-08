@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "/home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/manifest.l"
-  "/home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Num.l"
+  "/home/ry/challenges/catkin_ws/devel/share/roseus/ros/challenge1/msg/Completed.l"
   "CMakeFiles/challenge1_generate_messages_eus"
 )
 
