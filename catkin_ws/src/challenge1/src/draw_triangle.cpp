@@ -6,7 +6,7 @@
 #include "geometry_msgs/Twist.h" // Twist messages (linear & angular velocity)
 #include "geometry_msgs/Pose2D.h" // x, y position and theta orientation
 #include "turtlesim/Pose.h" // x, y, theta, linear & angular velocity
- 
+#include "std_msgs/Float32.h"
 // Remove the need to use std:: prefix
 using namespace std;
  
@@ -25,6 +25,7 @@ bool firstCornerReached = false;
 bool secondCornerReached = false;
 bool triangleDone = false;
 bool startPosDetermined = false;
+double completed = 0;
 double velocity;
  
 // The distance threshold in meters that will determine when 
@@ -97,21 +98,21 @@ double setTriangleCorners()
 void changeGoal(ros::Publisher velocityPub){
   if(!firstCornerReached){
     goal = firstcorner;
-    rotate(degrees2radians(10),degrees2radians(120),false,velocityPub);
+    rotate(degrees2radians(30),degrees2radians(120),false,velocityPub);
   }else if(!secondCornerReached){
     goal = secondcorner;
-    rotate(degrees2radians(10),degrees2radians(120),false,velocityPub);
+    rotate(degrees2radians(30),degrees2radians(120),false,velocityPub);
 
   }else if(!triangleDone){
     goal = startpos;
-    rotate(degrees2radians(10),degrees2radians(120),false,velocityPub);
+    rotate(degrees2radians(30),degrees2radians(120),false,velocityPub);
 
   }else{
     cout << "Triangle has been drawn!"<< endl << endl;
   }
   
 }
-
+// when a triangle is finished, reset the necessary values and be ready to draw another triangle
  void reset(){
   startPosDetermined = false;
   firstCornerReached = false;
@@ -127,9 +128,15 @@ void setVelocity(ros::Publisher velocityPub) {
     // proportional to the distance the robot is from the 
     // goal.
     velCommand.linear.x = velocity;
+    if(!firstCornerReached){
+      completed = (((current.x - startpos.x) /sideLen) * ((double)1/3)) * 100;
+    }else if(!secondCornerReached){
+      completed = (sqrt((firstcorner.x - current.x)*(firstcorner.x - current.x) + (current.y - firstcorner.y)*(current.y - firstcorner.y)) + sideLen) * 100 / (3 * sideLen);
+    }else if(!triangleDone){
+      completed = (sqrt((secondcorner.x - current.x)*(secondcorner.x - current.x) + (secondcorner.y - current.y)*(secondcorner.y - current.y)) + (2*sideLen)) * 100 / (3 * sideLen);
+    }
   }
   else {
-    //cout << "Goal has been reached!" << endl << endl;
     velCommand.linear.x = 0;
     velCommand.linear.y = 0;
     if(!firstCornerReached){
@@ -138,7 +145,8 @@ void setVelocity(ros::Publisher velocityPub) {
       secondCornerReached = true;
     }else if(!triangleDone){
       triangleDone = true;
-    }else{
+      completed = 100;
+    }else{   
       reset();
     }
     changeGoal(velocityPub);
@@ -176,7 +184,8 @@ int main(int argc, char **argv) {
   // processed quickly enough.
   ros::Publisher velocityPub =
     node.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 0);
- 
+  
+  ros::Publisher draw_percent_pub = node.advertise<std_msgs::Float32>("draw_percent",1000);
   // Specify a frequency that want the while loop below to loop at
   // In this case, we want to loop 10 cycles per second
   ros::Rate loop_rate(10); 
@@ -205,7 +214,7 @@ int main(int argc, char **argv) {
       return 0;
     }
 
-    cout << "enter side length (max:" << maxLen << "): ";
+    cout << "enter side length (max:" << maxLen <<"min:0): ";
     cin >> sideLen;
     setTriangleCorners();
    }
@@ -213,15 +222,20 @@ int main(int argc, char **argv) {
     continue;
    }
    node.getParam("turtle_speed",velocity);
-   
+   // After we call the callback function to update the robot's pose, we 
+   // set the velocity values for the robot.
+   setVelocity(velocityPub);
+   // Publish the velocity command to the ROS topic
+   velocityPub.publish(velCommand);
+   std_msgs::Float32 msg;
+   msg.data = completed;
+   draw_percent_pub.publish(msg);
+   cout << "completed:" << completed;
   
  
-    // After we call the callback function to update the robot's pose, we 
-    // set the velocity values for the robot.
-    setVelocity(velocityPub);
+    
  
-    // Publish the velocity command to the ROS topic
-    velocityPub.publish(velCommand);
+    
  
     // Print the output to the console
     cout << "start x = " << startpos.x << endl
@@ -235,7 +249,7 @@ int main(int argc, char **argv) {
          << "Linear Velocity (x) = " << velCommand.linear.x << " m/s" << endl
          << "Linear Velocity (y) = " << velCommand.linear.y << " m/s" << endl
          << "first corner reached =" << firstCornerReached << endl
-         << "second corner reached =" << secondCornerReached << endl;
+         << "second corner reached =" << secondCornerReached << endl<<endl<<endl<<endl;
  
     // Sleep as long as we need to to make sure that we have a frequency of
     // 10Hz
