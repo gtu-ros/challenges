@@ -1,0 +1,2 @@
+challenge1
+-DCATKIN_DEVEL_PREFIX=/home/ry/challenges/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ry/challenges/catkin_ws/install -G Unix Makefiles
