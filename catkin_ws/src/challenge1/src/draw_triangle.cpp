@@ -178,8 +178,7 @@ int main(int argc, char **argv) {
   // any messages that are received that are not able to be
   // processed quickly enough.
   // Every time a new pose is received, update the robot's pose.
-  ros::Subscriber currentPoseSub =
-    node.subscribe("turtle1/pose", 0, updatePose);
+  ros::Subscriber currentPoseSub = node.subscribe("turtle1/pose", 0, updatePose);
  
   // Publish velocity commands to a topic.
   // Hold no messages in the queue. Automatically throw away 
@@ -187,7 +186,7 @@ int main(int argc, char **argv) {
   // processed quickly enough.
   ros::Publisher velocityPub = node.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 0);
   
-  ros::Publisher draw_percent_pub = node.advertise<std_msgs::Float32>("draw_percent",1000);
+  ros::Publisher draw_percent_pub = node.advertise<std_msgs::Float32>("draw_percent",10);
 
   //ros::Publisher pub = node.advertise<challenge1::Completed>("completed",10);
   // Specify a frequency that want the while loop below to loop at
@@ -231,7 +230,7 @@ int main(int argc, char **argv) {
    velocityPub.publish(velCommand);
    
    draw_percent_pub.publish(msg);
-  
+   //ROS_INFO("%s%lf", "completed %",msg.completed);
     // Sleep as long as we need to to make sure that we have a frequency of
     // 10Hz
     loop_rate.sleep();

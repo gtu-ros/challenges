@@ -1,5 +1,4 @@
-<launch>
-
+<launch>   
   <param name="turtle_speed" type="double" value="1.0" />
-
+  <node pkg="turtlesim" type="turtlesim_node" name="turtle1"   />  
 </launch>
