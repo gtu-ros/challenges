@@ -1,3 +1,4 @@
 <launch>
-    <param name="turtle_speed" value="1.0" />
+    <node pkg="challenge1" type="draw_triangle"/>
+    <param name="turtle_speed" type="double" value="1.0" />
 </launch>
