@@ -2,7 +2,7 @@
 import rospy
 from geometry_msgs.msg  import Twist
 from turtlesim.msg import Pose
-#from challenges.msg import Completed
+from challenges.msg import Completed
 PI = 3.1415926535897
 
 class turtlebot():
@@ -11,11 +11,12 @@ class turtlebot():
         #Creating our node,publisher and subscriber
         rospy.init_node('draw_triangle', anonymous=True)
         self.velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
-        #self.progress_publisher = rospy.Publisher("/challenge/draw_percent", Complated, queue_size=10)
+        self.progress_publisher = rospy.Publisher("/challenge/draw_percent", Completed, queue_size=10)
         self.pose_subscriber = rospy.Subscriber('/turtle1/pose', Pose)
         self.pose = Pose()
         self.rate = rospy.Rate(10)
         self.speed=rospy.get_param("turtle_speed")
+        self.percent=Completed()
 
     def move_in_line(self,side_length):
         vel_msg = Twist()
@@ -35,6 +36,8 @@ class turtlebot():
             distance_travelled = self.speed*(t1-t0)
 
         vel_msg.linear.x = 0
+        self.percent.completed=0
+        self.progress_publisher.publish(self.percent)
         self.velocity_publisher.publish(vel_msg)
     def rotate(self):
         vel_msg=Twist()
