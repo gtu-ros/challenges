@@ -1,4 +1,4 @@
-# GTU Rover ROS Challenge
+# GTU Rover Challenges
 
 ## How to contribute?
 
