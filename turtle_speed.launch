@@ -1,0 +1,4 @@
+<launch>
+	<node name="turtlemove" pkg="beginner_tutorials" type="turtlemove.py" output="screen"/>
+    <param name = "turtle_speed" type="double" value = "1.0" />
+</launch>
